@@ -1,6 +1,7 @@
 package com.tut.HibernateProject;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -8,6 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "tbl_mpstrak_student")
 public class Student {
 	@Id
+	@GeneratedValue
 	private Integer studentId;
 	private String name;
 	private String address;

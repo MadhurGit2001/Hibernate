@@ -1,5 +1,7 @@
 package com.tut.HibernateProject;
 
+import java.sql.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -14,7 +16,7 @@ public class App {
 		System.out.println("Hello World!");
 
 		// Build the SessionFactory
-		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg2.xml").buildSessionFactory();
+		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 
 		// Create a new Student object
 		Student st = new Student();
@@ -22,6 +24,16 @@ public class App {
 		st.setName("Madhur");
 		st.setRollNo(190);
 		st.setAddress("E-Block Sector 20 Noida");
+		
+		Address address =new Address();
+		address.setStreet("Laxmi nagar");
+		address.setAddedDate(new Date(0));
+		address.setCity("Mathura");
+		address.setOpen("false");
+		address.setImage(null);
+		
+		
+		
 
 		// Open a new session
 		Session session = sessionFactory.openSession();
@@ -31,6 +43,7 @@ public class App {
 
 		// Save the student object
 		session.save(st);
+		session.save(address);
 
 		// Commit the transaction
 		transaction.commit();
