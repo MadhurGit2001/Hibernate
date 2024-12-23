@@ -1,5 +1,10 @@
 package com.tut.HibernateProject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Date;
 
 import org.hibernate.Session;
@@ -12,7 +17,7 @@ import org.hibernate.Transaction;
  *
  */
 public class App {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.out.println("Hello World!");
 
 		// Build the SessionFactory
@@ -24,16 +29,18 @@ public class App {
 		st.setName("Madhur");
 		st.setRollNo(190);
 		st.setAddress("E-Block Sector 20 Noida");
-		
-		Address address =new Address();
+
+		Address address = new Address();
 		address.setStreet("Laxmi nagar");
 		address.setAddedDate(new Date(0));
 		address.setCity("Mathura");
 		address.setOpen("false");
-		address.setImage(null);
-		
-		
-		
+
+		// Reading Image
+		byte[] data = Files.readAllBytes(Paths.get("src/main/java/pic.png"));
+
+		// Assuming address is an instance of your entity class
+		address.setImage(data);
 
 		// Open a new session
 		Session session = sessionFactory.openSession();
