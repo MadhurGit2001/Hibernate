@@ -14,6 +14,15 @@ public class Student {
 	private String name;
 	private String address;
 	private Integer rollNo;
+	private Certificate certificate;
+
+	public Certificate getCertificate() {
+		return certificate;
+	}
+
+	public void setCertificate(Certificate certificate) {
+		this.certificate = certificate;
+	}
 
 	public Student(Integer studentId, String name, String address, Integer rollNo) {
 		super();
